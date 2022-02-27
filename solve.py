@@ -160,8 +160,6 @@ number_solves = 0
 
 
 def solve_corners(board: List[Card], i_cards: List[Card], current_pos: int) -> bool:
-    # print("Solve corners")
-
     if i_cards == []:
         return True
 
@@ -251,7 +249,6 @@ def solve_corners(board: List[Card], i_cards: List[Card], current_pos: int) -> b
 def solve_cross(board: List[Card], i_cards: List[Card], current_pos: int) -> bool:
     if current_pos > 3:
         return True
-    # print(f"Solve cross {current_pos}")
 
     center_card = board[CENTER]
     pos, dir = check_cross_position[current_pos]
@@ -261,7 +258,6 @@ def solve_cross(board: List[Card], i_cards: List[Card], current_pos: int) -> boo
 
     p_card: Card
     for p_card in possible_cards:
-        # print(f'{dir.name} {possible_cards}')
         new_cards = i_cards.copy()
         new_cards.remove(p_card)
 
@@ -300,9 +296,8 @@ if __name__ == "__main__":
         board: List[Card] = get_empty_board()
         board[CENTER] = center_card
         
-        # print(f"\nCenter test {test_no}")
         if solve_cross(board, cards, 0):
             print_board(board)
 
     print("Done")
-    print(f"Number of solves (almost): {number_solves}")
+    print(f"Number of solves: {number_solves}")
